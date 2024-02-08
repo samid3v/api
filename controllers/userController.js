@@ -61,9 +61,9 @@ export const userLogin = asyncHandler(async (req, res) => {
 
           res.cookie('token', token, { 
             httpOnly: true , 
-            sameSite: 'none',
-            secure:true,
-            domain: '.onrender.com'
+            // sameSite: 'none',
+            // secure:true,
+            domain: 'onrender.com'
           })
           .status(200)
           .json({ message: 'Login successful',
