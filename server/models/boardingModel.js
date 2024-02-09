@@ -26,9 +26,9 @@ const BoardingSchema = new mongoose.Schema({
     
 },{timestamps:true})
 
-BoardingSchema.post('deleteOne', async function() {
+BoardingSchema.pre('deleteOne', async function() {
     const module_id = this._conditions._id;
-    await Payment.deleteOne({ module_id });
+    await Payment.deleteMany({ module_id });
   });
 
  const Boarding = mongoose.model('Boarding', BoardingSchema)
