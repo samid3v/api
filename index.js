@@ -6,6 +6,7 @@ import { connectDB } from "./server/db/connectDb.js"
 import session from "express-session"
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import path from 'path'
 import patientRouter from "./routes/patientRoute.js"
 import appointmentRouter from "./routes/appointmentRoute.js"
 import medicalRouter from "./routes/medicalRoute.js"
@@ -21,6 +22,7 @@ import analyticsRouter from "./routes/analytictsRoute.js"
 dotenv.config()
 
 const port = process.env.PORT || 5000
+const __dirname = path.resolve()
 
 const app = express()
 
@@ -46,6 +48,12 @@ app.use("/api/doses", doseRouter)
 app.use("/api/analytics", analyticsRouter)
 
 app.use(errorHandler);
+
+app.use(express.static(path.join(__dirname, '/client/build')))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
 
 
 app.listen(port, ()=>{
