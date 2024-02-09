@@ -63,7 +63,7 @@ export const userLogin = asyncHandler(async (req, res) => {
             httpOnly: true , 
             sameSite: 'none',
             secure:true,
-            domain: '.petfarm.onrender.com'
+            domain: '.onrender.com'
           })
 
           .status(200)
