@@ -3,7 +3,6 @@ import dotenv from "dotenv"
 import userRouter from "./routes/userRoute.js"
 import errorHandler from "./middlewares/errorHandler.js"
 import { connectDB } from "./server/db/connectDb.js"
-import session from "express-session"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import path from 'path'
@@ -26,7 +25,7 @@ const __dirname = path.resolve()
 
 const app = express()
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'https://petfarm.onrender.com/', credentials: true }));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
